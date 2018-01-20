@@ -18,6 +18,11 @@ namespace AnotherConsoleApp
 
             foreach (var child in children)
             {
+                if (child.Name == "Suzy")
+                {
+                    continue; //this stops this iteration
+                    //break; //this ends the entire loop 
+                }
                 Console.WriteLine($"The kid's name is {child.Name}, and she is {(child.Sick == true ? "sick" : "healthy")}");
                 Console.WriteLine(child.ForgeASickNote());
             }
@@ -31,12 +36,36 @@ namespace AnotherConsoleApp
             //children.Add(ralph);
 
 
+            //KINDLE class stuff
 
-            var lineRead = Console.ReadLine(); 
+            var kindles = new List<Kindle>
+            {
+                new Kindle { BatteryPercent = .87, NumberOfBooks = 24 },
+                new Kindle { BatteryPercent = .12, NumberOfBooks = 24 },
+                new Kindle { BatteryPercent = .50, NumberOfBooks = 24 }
+            };
+
+            foreach (var kindle in kindles)
+            {
+                Console.WriteLine(kindle.KindleStatus()); 
+            }
 
 
 
-            
+            string input = Console.ReadLine();
+            string output = ""; 
+
+            for (var i = 0; i < input.Length; i++)
+            {
+                output += input[i].ToString().ToUpper(); 
+                output += new String(input[i], i);
+                output += (i != input.Length - 1) ? "-" : ""; 
+            }
+            Console.WriteLine(output);
+
+            var hello = Console.ReadLine();
+
+
         }
     }
 }
